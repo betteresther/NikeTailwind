@@ -1,11 +1,15 @@
 import Button from "../COMPONENTS/button";
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { arrowRight } from "../assets/icons";
 import { shoes, statistics } from "../constants";
 import { bigShoe1 } from "../assets/images"
 import ShoeCard from "../COMPONENTS/ShoeCard";
 
 const Hero = () => {
+const [bigShoeImg, setBigShoeImg] = 
+useState (bigShoe1)
+
+  
   return (
     <section
       id="home"
@@ -38,7 +42,7 @@ const Hero = () => {
 
       <div className="relative flex-1 flex justify-center items-center xl:min-h-screen max-xl:py-40 bg-gray-300 bg-hero bg-cover bg-center">
         <img
-          src={bigShoe1}
+          src={bigShoeImg}
           alt="shoe collection"
           width={610}
           height={500}
@@ -52,8 +56,8 @@ const Hero = () => {
               <ShoeCard
                 imgURL={shoe}
                 changeBigShoeImage=
-                {() => { }}
-                bigShoeImg=""
+                {(shoe) => setBigShoeImg  (shoe)}
+                bigShoeImg={bigShoeImg}
               />
             </div>
           ))}
