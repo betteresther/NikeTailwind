@@ -1,5 +1,6 @@
 import { products } from '../constants';
 import PopularProductsCard from '../COMPONENTS/PopularProductsCard';
+import { FadeIn } from "../COMPONENTS/Animation";
 
 const PopularProducts = () => {
   return (
@@ -13,9 +14,13 @@ const PopularProducts = () => {
 
 <div className='mt-16 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1
 sm:gap-4 gap-14'>
-{products.map((product) => (
+{products.map((product,id) => (
+<FadeIn key={id} delay={(id * 1) / 10} direction="left">
   <PopularProductsCard key= {product.name} 
   {...product}/>
+  
+     </FadeIn>
+
 ))}
 </div>
 
